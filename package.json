@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
-    "start":"node src/index.js",
-    "deploy": "cd .. && cd frontend-react && npm run build && cd .. && cd back-node && rm -rf ./public && mv ../frontend-react/dist ./public"
+    "start": "node src/index.js"
+    
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +14,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "js": "^0.1.0",
+    "mysql": "^2.18.1",
     "mysql2": "^3.10.0",
+    "node": "^22.3.0",
     "nodemon": "^3.1.3"
   }
 }
