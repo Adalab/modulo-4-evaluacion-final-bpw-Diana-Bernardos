@@ -1,20 +1,23 @@
-FACE CREAM API "CREMAS NATURALES"
-
-![alt text](image.png)
-
-
-
-
-Esta API permite gestionar registros de una base de datos de cremas faciales naturales, permitiendo obtener, actualizar y eliminar registros.
-
-## Descripción
-
-La API tiene los siguientes endpoints:
-
-- `GET /facecream`: Obtiene todos los registros de cremas faciales.
-- `PUT /cream/:id`: Actualiza un registro de crema facial por ID.
-- `DELETE /facecream/:id`: Elimina un registro de crema facial por ID.
-
-<p aling="center" width="100%">
-<ims src="https://elbalconverde.com/wp-content/uploads/2017/05/CREMA-1-731x1024.jpg" alt="crema">
+## :mujer_con_palma_hacia_arriba: ​**FACE CREAM API "CREMAS NATURALES"** :mujer_con_palma_hacia_arriba:  ##
+<p align="center" width="100%">
+<img src="https://elbalconverde.com/wp-content/uploads/2017/05/CREMA-1-731x1024.jpg" alt="FaceCream">
 </p>
+Esta API permite gestionar registros de una base de datos de cremas faciales naturales, permitiendo obtener, actualizar y eliminar registros.
+## **Instalación** :engranaje: ##
+Para utilizar esta API, primero debes clonar el repositorio desde GitHub:
+    git clone https://github.com/Adalab/modulo-4-evaluacion-final-bpw-Diana-Bernardos.git
+Instalar todas las dependencias necesarias con:
+    npm install
+Luego, crea un archivo ".env" con tus datos.
+## **Uso** :engranaje: ##
+Una vez que hayas instalado las dependencias, puedes iniciar el servidor ejecutando el siguiente comando:
+    npm run dev
+El servidor estará en funcionamiento en http://localhost:3000 (o el puerto que hayas indicado en el archivo .env). Puedes usar Postman para realizar solicitudes HTTP a los endpoints proporcionados por la API.
+## **Endpoints**​ :lupa_derecha: ##
+La API proporciona los siguientes endpoints:
+- GET /facecream: Obtiene la lista de cremas.
+- GET /facecream/:carné_de_identidad: Obtiene los detalles de un registro específico.
+- POST /facecream: Crea un nuevo registro.
+- PUT /facecream/:carné_de_identidad: Actualiza los detalles de un registro existente.
+- DELETE /facecream/:carné_de_identidad: Elimina una crema. (editado) 
+(53 kB)
