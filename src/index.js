@@ -23,13 +23,13 @@ async function conexion () {
     const conn = await mysql.createConnection({
       host: "localhost",
       user: "root",
-      password:"root", //process.env.DB_PASS,
+      password:"root", 
       database: "facecream",
       
     });
   
     await conn.connect();
-    console.log('conexion con la BD ' + conex.threadId);
+    console.log('conexion con la BD ');
     return conn;
    } 
    catch (error) {
@@ -42,23 +42,28 @@ conexion();
 
 // Endpoint 1 insertar un nuevo registro 
 api.post("/facecream", async (req, res) =>{
-    const conn = await conexion();
-    const { tipe, ingredients, descr,texture } = req.body;
+  try {
+      const conn = await conexion();
+    const { tipe, ingredient, descr } = req.body;
   
     const sqlInsert =
-      'insert into facecream (tipe, ingredients, descr,texture) values(?,?,?,?)';
-    const [newtext] = await conn.query(sqlInsert, [
+      'insert into facecream (tipe, ingredient, descr) values(?,?,?)';
+    const [newData] = await conn.query(sqlInsert, [
         tipe,
-        ingredients,
+        ingredient,
         descr,
-        texture,
     ]);
     res.status(200).json({
       success: true,
-      id: texture.insertId,
+      id: newData.insertId,
     });
   
     await conn.end();
+  } catch (error) {
+    res.status(400).json(error);
+    
+  }
+  
   });
 
 // Endpoint 2 :listar registros existentes
@@ -84,10 +89,10 @@ api.get("/facecream", async (req,res)=>{
 //filtrar por id 
 api.put('/cream/:id', async (req, res) => {
     const conn = await conexion();
-    const ifacecream = req.params.id;
+    const idCream = req.params.id;
     const newData = req.body;
     const modificarSql =
-      'UPDATE facecream SET  tipe = ?, ingredient= ?, descr= ?  WHERE id = ?';
+      'UPDATE facecream SET  tipe = ?, ingredient= ?, descr= ?  WHERE idCream = ?';
     const [result] = await conn.query(modificarSql, [
       newData.tipe,
       newData.ingredient,
@@ -106,7 +111,7 @@ api.put('/cream/:id', async (req, res) => {
   api.delete('/facecream/:id', async (req,res)=>{
     const conn = await conexion();
     const idCream = req.params.id;
-    const deleteSql = 'delete from facecream WHERW id = ?';
+    const deleteSql = 'delete from facecream WHERE id = ?';
     const[result]= await conn.query(deleteSql , [idCream]);
     if(result.affectedRows >0){
       res.status(200).json({success :true});
