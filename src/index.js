@@ -17,29 +17,31 @@ api.listen(PORT, () => {
 
 //conexion con la BD
 async function conexion () {
- try {
+
   //SE CREA LA CONEXION
-  const conn = await mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    
-  });
-
-  await conn.connect();
-  console.log('conexion con la BD ' + conex.threadId);
-  return conn;
-
- } catch (error) {
+  try {
+    const conn = await mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password:"root", //process.env.DB_PASS,
+      database: "facecream",
+      
+    });
   
- }  };
+    await conn.connect();
+    console.log('conexion con la BD ' + conex.threadId);
+    return conn;
+   } 
+   catch (error) {
+    console.log (error);
+    
+  }
+};
   
 conexion();
 
 // Endpoint 1 insertar un nuevo registro 
-api.post('/facecream', async (req, res) => {
+api.post("/facecream", async (req, res) =>{
     const conn = await conexion();
     const { tipe, ingredients, descr,texture } = req.body;
   
@@ -60,6 +62,7 @@ api.post('/facecream', async (req, res) => {
   });
 
 // Endpoint 2 :listar registros existentes
+
 
 api.get("/facecream", async (req,res)=>{
     try {
@@ -99,11 +102,19 @@ api.put('/cream/:id', async (req, res) => {
     console.log(result);
   });
 
-  // actualizar un registro existente
-
-
-
-  
-
-        
+  // delete un registro 
+  api.delete('/facecream/:id', async (req,res)=>{
+    const conn = await conexion();
+    const idCream = req.params.id;
+    const deleteSql = 'delete from facecream WHERW id = ?';
+    const[result]= await conn.query(deleteSql , [idCream]);
+    if(result.affectedRows >0){
+      res.status(200).json({success :true});
+    }else{
+      res.status(200).json({success:false , message:'no existe id'});
+    }
+    console.log(result);
+  });
     
+ 
+  
