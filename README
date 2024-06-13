@@ -1,4 +1,9 @@
-Face Cream API
+FACE CREAM API "CREMAS NATURALES"
+
+
+
+
+
 
 Esta API permite gestionar registros de una base de datos de cremas faciales naturales, permitiendo obtener, actualizar y eliminar registros.
 
@@ -10,4 +15,6 @@ La API tiene los siguientes endpoints:
 - `PUT /cream/:id`: Actualiza un registro de crema facial por ID.
 - `DELETE /facecream/:id`: Elimina un registro de crema facial por ID.
 
-
+<p aling="center" width="100%">
+<ims src="https://www.google.com/url?sa=i&url=https%3A%2F%2Felbalconverde.com%2Freceta-crema-corporal-rosas%2F&psig=AOvVaw3dxWcmEpvIaME4fvWcalJ3&ust=1718380856313000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLDhvNj52IYDFQAAAAAdAAAAABAE" alt="crema">
+</p>
