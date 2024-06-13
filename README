@@ -1,0 +1,13 @@
+Face Cream API
+
+Esta API permite gestionar registros de una base de datos de cremas faciales naturales, permitiendo obtener, actualizar y eliminar registros.
+
+## Descripción
+
+La API tiene los siguientes endpoints:
+
+- `GET /facecream`: Obtiene todos los registros de cremas faciales.
+- `PUT /cream/:id`: Actualiza un registro de crema facial por ID.
+- `DELETE /facecream/:id`: Elimina un registro de crema facial por ID.
+
+
